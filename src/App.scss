@@ -5,8 +5,9 @@ h1 {
 }
 
 .taskboard-nav{
-    background-color: #f2efeb;    
+    background-color: #fbfbfb;    
     padding-left: 1rem;
+    box-shadow: 2px 1px 1px 1px rgba(138,72,244, .2);
 }
 
 .global-color{
@@ -56,22 +57,24 @@ h1 {
 .component-div{
     height: 50rem; 
     padding-top: 1rem;  
-    background-color: #FBFBFB;  
+    background-color: #f3f2ef;  
 }
 
 .task-area{
-    background-color: #f2efeb;
+    background-color: #fbfbfb;
     height: 48rem;
-    border-radius: 8px;
-    border: solid;
-    border-color: #8a48f4;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 1px rgba(138,72,244, .4);
     text-align: center;
     padding-top: 1rem;
     border-width: 1px;
+    &:hover{
+        box-shadow: 4px 4px 4px 1px rgba(83,15,194, .4);
+    }
 }
 
 .task-insert-btn{
-    border: #ffffffff;
+    border: none;
     background-color: #0f0f0f;
     border-radius: 8px;
 }
@@ -83,4 +86,39 @@ h1 {
     border-color: #530fc2;
     border-width: 1px;
     color: #530fc2;
+}
+
+.task-card{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: -5px;
+    margin-bottom: 12px;
+    background-color: #f3f2ef;
+    min-height: 3rem;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 1px 1px 1px 1px rgba(138,72,244, .4);
+    &:hover{
+        box-shadow: 2px 2px 2px 1px rgba(83,15,194, .4);
+    }
+}
+
+.task-card-inner{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.task-text{
+    color: #8a48f4;//0F002F;//23016B;//4287f5
+    font-weight: 500;      
+    font-size: 14px;    
+}
+
+.task-card-button{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 8px;
+    padding-bottom: 5px;
+    justify-content: space-between;
+    display: flex;
 }
