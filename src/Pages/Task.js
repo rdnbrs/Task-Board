@@ -5,17 +5,13 @@ import TaskArea from "../Components/TaskArea/TaskArea";
 
 function Task() {
     const [taskItems, setTaskItems] = useState([])
-    const [selectedItems, setSelectedItems] = useState([])
-    const [progressItems, setProgressItems] = useState([])
-    const [testItems, setTestItems] = useState([])
-    const [doneItems, setDoneItems] = useState([])
 
     const [taskCount, setTaskCount] = useState(0)
     const [show, setShow] = useState(false)
     const [taskTitle, setTaskTitle] = useState("")
 
-    const addTask = (title) => {
-        setTaskItems([...taskItems, { "taskid": taskCount, taskTitle: taskTitle, status: 1 }])
+    const addTask = () => {
+        setTaskItems([...taskItems, { taskid: taskCount, taskTitle: taskTitle, status: 1 }])
         setShow(false)
     }
 
@@ -32,25 +28,42 @@ function Task() {
         setShow(false)
     }
 
+    const changeStatus = (item, value) => {
+        item.status += value
+        setTaskItems([...taskItems])
+    }
+
+    const deleteTask = (task) => {
+        let itemIndex = -1
+        taskItems.forEach((item, index) => {
+            if (task.taskid == item.taskid) {
+                itemIndex = index
+            }
+        })
+        let taskList = [...taskItems]
+        taskList.splice(itemIndex, 1)
+        setTaskItems([...taskList])
+    }
+
     return (
         <div>
             <Container fluid className="component-div">
                 <Row>
                     <Col xs={1}></Col>
                     <Col xs={2}>
-                        <TaskArea title={"Opened"} items={taskItems} hasButton={true} addTask={addTask} openModal={openModal}></TaskArea>
+                        <TaskArea title={"Opened"} items={taskItems} deleteTask={deleteTask} changeStatus={changeStatus} filterStatus={1} hasButton={true} addTask={addTask} openModal={openModal}></TaskArea>
                     </Col>
                     <Col xs={2}>
-                        <TaskArea title={"Selected For Development"} items={selectedItems}></TaskArea>
+                        <TaskArea title={"Selected For Development"} items={taskItems} changeStatus={changeStatus} filterStatus={2}></TaskArea>
                     </Col>
                     <Col xs={2}>
-                        <TaskArea title={"In Progress"} items={progressItems}></TaskArea>
+                        <TaskArea title={"In Progress"} items={taskItems} changeStatus={changeStatus} filterStatus={3}></TaskArea>
                     </Col>
                     <Col xs={2}>
-                        <TaskArea title={"In Test"} items={testItems}></TaskArea>
+                        <TaskArea title={"In Test"} items={taskItems} changeStatus={changeStatus} filterStatus={4}></TaskArea>
                     </Col>
                     <Col xs={2}>
-                        <TaskArea title={"Done"} items={doneItems}></TaskArea>
+                        <TaskArea title={"Done"} items={taskItems} changeStatus={changeStatus} filterStatus={5}></TaskArea>
                     </Col>
                 </Row>
             </Container>

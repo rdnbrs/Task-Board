@@ -10,7 +10,8 @@ function TaskArea(props) {
             <hr style={{ borderTop: "1px" }}></hr>
             {
                 props.items.map(item => {
-                    return <TaskCard item={item} />
+                    if (item.status == props.filterStatus)
+                        return <TaskCard item={item} changeStatus={props.changeStatus} deleteTask={props.filterStatus == 1 ? props.deleteTask : () => { }} />
                 })
             }
         </div>
