@@ -7,7 +7,7 @@ function TaskCard(props) {
     }
 
     return (
-        <div className="task-card">
+        <div className={!props.darkMode ? "task-card-dark" : "task-card"}>
             <div className="task-card-inner">
                 <span className="task-text">{props.item.taskTitle}</span>
             </div>

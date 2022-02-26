@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import TaskModal from "../Components/Modal/TaskModal";
 import TaskArea from "../Components/TaskArea/TaskArea";
 
-function Task() {
+function Task(props) {
     const [taskItems, setTaskItems] = useState([])
 
     const [taskCount, setTaskCount] = useState(0)
@@ -25,6 +25,7 @@ function Task() {
     }
 
     const closeModal = () => {
+        setTaskTitle("")
         setShow(false)
     }
 
@@ -47,28 +48,28 @@ function Task() {
 
     return (
         <div>
-            <Container fluid className="component-div">
+            <Container fluid className={!props.darkMode ? "component-div-dark" : "component-div"}>
                 <Row>
                     <Col xs={1}></Col>
                     <Col xs={2}>
-                        <TaskArea title={"Opened"} items={taskItems} deleteTask={deleteTask} changeStatus={changeStatus} filterStatus={1} hasButton={true} addTask={addTask} openModal={openModal}></TaskArea>
+                        <TaskArea darkMode={props.darkMode} title={"Opened"} items={taskItems} deleteTask={deleteTask} changeStatus={changeStatus} filterStatus={1} hasButton={true} addTask={addTask} openModal={openModal}></TaskArea>
                     </Col>
                     <Col xs={2}>
-                        <TaskArea title={"Selected For Development"} items={taskItems} changeStatus={changeStatus} filterStatus={2}></TaskArea>
+                        <TaskArea darkMode={props.darkMode} title={"Selected For Development"} items={taskItems} changeStatus={changeStatus} filterStatus={2}></TaskArea>
                     </Col>
                     <Col xs={2}>
-                        <TaskArea title={"In Progress"} items={taskItems} changeStatus={changeStatus} filterStatus={3}></TaskArea>
+                        <TaskArea darkMode={props.darkMode} title={"In Progress"} items={taskItems} changeStatus={changeStatus} filterStatus={3}></TaskArea>
                     </Col>
                     <Col xs={2}>
-                        <TaskArea title={"In Test"} items={taskItems} changeStatus={changeStatus} filterStatus={4}></TaskArea>
+                        <TaskArea darkMode={props.darkMode} title={"In Test"} items={taskItems} changeStatus={changeStatus} filterStatus={4}></TaskArea>
                     </Col>
                     <Col xs={2}>
-                        <TaskArea title={"Done"} items={taskItems} changeStatus={changeStatus} filterStatus={5}></TaskArea>
+                        <TaskArea darkMode={props.darkMode} title={"Done"} items={taskItems} changeStatus={changeStatus} filterStatus={5}></TaskArea>
                     </Col>
                 </Row>
             </Container>
 
-            <TaskModal show={show} closeModal={closeModal} addTask={addTask} taskTitle={taskTitle} setTaskTitle={setTaskTitle}></TaskModal>
+            <TaskModal darkMode={props.darkMode} show={show} closeModal={closeModal} addTask={addTask} taskTitle={taskTitle} setTaskTitle={setTaskTitle}></TaskModal>
         </div>
     )
 }
