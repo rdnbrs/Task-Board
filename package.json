@@ -1,6 +1,7 @@
 {
   "name": "webpackstarter",
   "version": "1.0.0",
+  "homepage": "http://www.my-react-app.com/taskboard",
   "description": "",
   "main": "index.js",
   "scripts": {
